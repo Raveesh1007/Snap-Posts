@@ -18,7 +18,7 @@ const BackgroundColor = () => {
 
 const Menu = ()=>{
     return (
-        <div tabIndex={0} classname = "dropdown-content menu p-2 shadow bg-base-100 rounded-box w-44 items-center grid grid-cols-4 gap-1">
+        <div tabIndex={0} className = "dropdown-content menu p-2 shadow bg-base-100 rounded-box w-44 items-center grid grid-cols-4 gap-1">
             <Color color = "bg-gradient-to-r from-cyan-500 to-light-blue-500"/>
             <Color color = "bg-gradient-to-r from-cyan-500 to-blue-500"/>
             <Color color = "bg-gradient-to-r from-cyan-800 to-blue-500"/>
