@@ -8,7 +8,7 @@ function getBgClass(hexCode: string):string{
         return `bg-${hexCode}`
     } else {
         console.log(`${hexCode} is not a valid hex code`);
-        return undefined;
+        return "undefined" ;
     }
 }
 
