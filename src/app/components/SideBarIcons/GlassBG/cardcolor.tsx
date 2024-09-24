@@ -1,7 +1,7 @@
 import React from "react";
 import {useContext} from "react";
 import {AppContext} from "@/pages";
-import {BsSunFill, BsMoon} from "react-icons/bs";
+import {BsSunFill, BsMoonFill} from "react-icons/bs";
 
 function getTheme(isDarkMode: boolean):string{
     if(isDarkMode){
@@ -38,3 +38,4 @@ const CardColor = () => {
       );
     }
     
+export default CardColor;
