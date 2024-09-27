@@ -16,6 +16,23 @@ const PlainBody = () =>{
     const scaleBy = width > height ? height : width;
     const MaxFactor = getMaxFactor(); 
     const scaleFactor = Math.min(1, MaxFactor/scaleBy);
-    const scaledWidth = Math.min(width * scaleFactor);
-    const scaledHeight = Math.mi
-}
+    const scaledWidth = Math.round(width * scaleFactor);
+    const scaledHeight = Math.round(height * scaleFactor);
+    const color = bgColor.replace("bg-[","").replace("]","" );
+
+    return (
+        <div className={`relative 
+            rounded-2xl  m-2 grid place-content-center
+             p-12 bg-white  shadow-2xl min-h-fit`}
+            style={{
+                width: `${scaledWidth}px`,
+                height: `${scaledHeight}px`,
+                backgroundColor: `${color}`,
+            }}
+            >
+      <PlainTweet />
+    </div>
+  );
+};
+
+export default PlainBody;
