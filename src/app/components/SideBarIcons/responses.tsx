@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AppContext } from "@/pages";
 
 const Responses = () => {
-    const {setResponse,} = useContext(AppContext);
+    const {setResponse} = useContext(AppContext);
 
 
     return (
