@@ -133,9 +133,39 @@ export default function Home() {
         <Head>
             <title>Snap-Posts</title>
             <meta
-                name="desc"
+                name="description"
+                content="Create beautiful images of tweets"
+            />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link rel="icon" sizes="3000x3000" href={favicon} />
         </Head>
+        <section className="relative h-screen  max-sm:hidden">
+        <Navbar />
+        <SideBar />
+        <div
+          className="py-4 min-h-[80vh] max-h-[90vh] w-full flex justify-center overflow-auto"
+          ref={ref}
+        >
+          {bgType === "Glass" ? <Body /> : <PlainBody />}
+        </div>
 
+        <TwitterLink />
+        <SiteLogo />
+      </section>
+      <section className="sm:hidden">
+        <div className="text-center h-[100vh] items-center align-middle">
+          <h1>
+            Made with ❤️ by{" "}
+            <a href="https://x.com/0xRaveesh">Raveesh Kumar </a>
+          </h1>
+          <h1 className="absolute top-1/2 text-4xl align-middle">
+            The Site Only Works on Bigger Screens
+          </h1>
+        </div>
+      </section>
+    </AppContext.Provider>
+  );
+}
 
 
     
