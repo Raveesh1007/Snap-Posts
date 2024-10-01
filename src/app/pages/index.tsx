@@ -41,10 +41,10 @@ export const AppContext = createContext({
 const inter = Inter({subsets: ["latin"]});
 
 export default function Home() {
-    const [bgType, setBgtype] = useState("Plain");
+    const [bgType, SetBgtype] = useState("Plain");
     const [response, setResponse] = useState(false);
-    const [bgColor, setBgColor] = useState("white");
-    const [fontSize, setFontSize] = useState("text-lg");
+    const [bgColor, SetBgColor] = useState("white");
+    const [fontSize, SetFontSize] = useState("text-lg");
     const [cardColor, setCardColor] = useState("Dark");
     const [tweet, setTweet] = useState<TweetData | null>(null);
     const [tweetId, setTweetId] = useState("");
@@ -66,6 +66,76 @@ export default function Home() {
             }
         };
 
-        fetchData
-    }) 
-}
+        fetchTweet();
+    }, [tweetId]);
+    
+    
+    useEffect(() => {
+        const prefersDark = 
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setFavicon(prefersDark ? "/favicon_dark.ico" : "/favicon_light.ico");
+    }, []);
+
+
+    const ref = useRef<HTMLDivElement>(null);
+
+    const onButtonClick = useCallback(() => {
+        if (
+          ref.current === null ||
+          ref.current.firstChild === null ||
+          !(ref.current.firstChild instanceof HTMLElement)
+        ) {
+          return;
+        }
+
+        toPng(ref.current.firstChild, { cacheBust: true })
+        .then((dataUrl) => {
+          const link = document.createElement("a");
+          link.download = tweetNameRef.current || "tweet.png";
+          link.href = dataUrl;
+          link.click();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, [ref]);
+
+
+    return (
+        <AppContext.Provider
+        value = {{
+            bgType,
+            SetBgtype,
+            response,
+            setResponse,
+            bgColor,
+            SetBgColor,
+            fontSize,
+            SetFontSize,
+            cardColor,
+            setCardColor,
+            tweetId,
+            setTweetId,
+            tweet,
+            onButtonClick,
+            height,
+            setHeight,
+            width,
+            setWidth,
+            textColor,
+            setTextColor,
+            favicon,
+            setFavicon,
+          }}
+        >
+
+        <Head>
+            <title>Snap-Posts</title>
+            <meta
+                name="desc"
+        </Head>
+
+
+
+    
