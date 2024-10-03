@@ -1,29 +1,37 @@
-import React from "react";
-import {useContext, useState} from "react";
-import { AppContext } from "@/pages";
+import React from 'react'
+import { useContext,useState } from 'react';
+import { AppContext } from '@/pages';
 
-function getBgClass(hexCode: string):string{
-    const validHexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
-    if(validHexRegex.test(hexCode)){
-        return `bg-${hexCode}`
+function getBgClass(hexCode: string): string | undefined {
+    const validHexRegex = /^#?([0-9A-Fa-f]{3}){1,2}$/;
+    if (validHexRegex.test(hexCode)) {
+      // valid hex code, return bg class
+      return `${hexCode}`;
     } else {
-        console.log(`${hexCode} is not a valid hex code`);
-        return "undefined" ;
+      // invalid hex code, return undefined
+      console.log(`${hexCode} is not a valid hex code`);
+      return undefined;
     }
-}
+  }
+  
 
-const PlainColors =() =>{
 
-    const{ bgColor } = useContext{AppContext}
+const PlainColors = () => {
 
-    return(
-        <div className="sidebar_icon flex-col dropdown-right dropdown-hover">
-            <div tabIndex={0} className = {`text-3xl ${bgColor} shadow-md rounded-full w-8 h-8 border-2 border-grey-300 item-slate-500`}></div>
-            <p className="icon-text">Color</p>
-            <Menu />
-        </div>
+    const { bgColor } = useContext(AppContext)
+
+
+    return (
+      <div  className='sidebar_icon flex-col dropdown dropdown-right dropdown-hover'>
+              <div tabIndex={0} className={`text-3xl ${bgColor} shadow-md rounded-full w-8 h-8 border-2 border-gray-300 text-slate-500`}>
+              </div>
+              <p className='icon_text'>Color</p>
+              <Menu /> 
+     </div> 
+  
     );
 }
+
 
 const Menu = () => {
 
@@ -56,20 +64,23 @@ const Menu = () => {
 
         </div>
     );
-}
+    }
 
-const Color = ({color = "bg-[#ffffff]"}:{color: string}) => {
+const Color = ({color = "bg-[#ffffff]"}: {color: string}) => {
 
-    const { setBgColor, bgColor} = useContext(AppContext);
+    const { setBgColor,bgColor } = useContext(AppContext)
 
-    return (
+return(
         <div className={`${color} w-8 h-8 rounded-xl hover:border-2 border-gray-400 m-1
-        ${bgColor === color ? "border-2 border-blue-800" :  ''}`}
-        onClick={() => setBgColor(color)}
-        >
+        ${bgColor === color ? 'border-2  border-blue-800' : ''}`}
+        onClick={() => {   
+            setBgColor(color)
+        }}>
         </div>
-    );
+);
+   
 }
 
 
-export default PlainColors;
+
+export default PlainColors

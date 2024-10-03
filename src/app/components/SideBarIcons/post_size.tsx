@@ -6,57 +6,67 @@ import { CSSTransition } from 'react-transition-group'
 import { SizeList } from './post_sizes';
 import { IconType } from 'react-icons';
 
+
 interface SizeProps {
     size: string;
     width: number;
     height: number;
-    Icon: IconType;
+    icon: IconType;
 }
+
+
+
 
 const PostSize = () => {
+
     return (
-    <div className='sodebar_icon flex-col dropdown-right dropdown-hover'>
-        <CgSize tabIndex={0} className ={`text-3xl w-8 h-8`}/>
-        <p className='icon_text'>
-            Size
-        </p>
-        <Values />
-    </div>
-)
+        <div className='sidebar_icon flex-col dropdown dropdown-right dropdown-hover'>
+            <CgSize tabIndex={0} className={`text-3xl w-8 h-8 text-slate-500`} />
+            <p className='icon_text'>Size</p>
+            <Values />
+        </div>
+    )
+
 }
 
-const  Values = () => {
+
+const Values = () => {
 
     const [activeMenu, setActiveMenu] = useState('main');
 
     return (
-        <div tabIndex ={0} className = 'dropdown-content menu p-2 shadow bg-base-100 rounded-box w-46'>
+        <div tabIndex={0} className='dropdown-content menu p-4 shadow bg-base-100 rounded-box w-46'>
+
             <CSSTransition
                 in={activeMenu === 'main'}
                 timeout={100}
                 classNames="menu-primary"
-                unmountOnExit   
-                >
-                    <div className='menu text-black'>
-                        {SizeList.map((size: SizeProps, tabIndex: number) => (
-                            <SingleSize
-                                key={tabIndex}
-                                size = {size.size}
-                                width = {size.width}
-                                height ={size.height}
-                                Icon = {size.Icon}
-                                />
-                        ))}
-                    </div>
-                </CSSTransition>
+                unmountOnExit
+            >
 
-                <CSSTransition
-                    in = {activeMenu === 'secondary'}
-                    timeout ={100}
-                    classNames = 'menu-secondary'
-                    unmountOnExit
-                    >
-                         <div className="menu text-black">
+                <div className="menu text-black">
+
+                    {SizeList.map((size: SizeProps,tabIndex:number) => (
+                        <SingleSize 
+                        key={tabIndex}
+                        size={size.size}
+                        width = {size.width}
+                        height = {size.height}
+                        icon = {size.icon}
+                        />
+                    ))}
+
+
+                </div>
+            </CSSTransition>
+            <CSSTransition
+                in={activeMenu === 'customSize'}
+                timeout={100}
+                classNames="menu-secondary"
+                unmountOnExit
+            >
+
+                <div className="menu text-black">
                     <div
                         onClick={
                             () => setActiveMenu('main')
@@ -67,12 +77,15 @@ const  Values = () => {
                     somethingelse
                 </div>
 
-                    </CSSTransition>
+
+
+            </CSSTransition>
 
         </div>
     )
 
 }
+
 
 
 const SingleSize = ({ size, width, height,icon:Icon }: SizeProps) => {
@@ -110,19 +123,21 @@ const SingleSize = ({ size, width, height,icon:Icon }: SizeProps) => {
     );
   };
 
+const Input = () => {
 
-  const Input = ()=>{
-    const {width, height, Setwidth, setHeight} = useContext(AppContext);
+    const { width, height, setWidth, setHeight } = useContext(AppContext);
 
-    const handleBreadthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newBreath = parseInt(e.target.value);
-        Setwidth(newBreath);
-    }
+    const handleBredthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newBredth = parseInt(event.target.value);
+        setWidth(newBredth);
+    };
 
-    const handleHeightChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
-        const newHeight = parseInt(e.target.value);
+    const handleHeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newHeight = parseInt(event.target.value);
         setHeight(newHeight);
     };
+
+
 
 
     return (
@@ -144,7 +159,7 @@ const SingleSize = ({ size, width, height,icon:Icon }: SizeProps) => {
                         <span className="label-text">Bredth</span>
                     </label>
                     <input
-                        onChange={handleBreadthChange}
+                        onChange={handleBredthChange}
                         type="text"
                         placeholder="1404"
                         className="input input-bordered w-16 max-w-xs rounded-sm font-regular p-2 text-gray-800"
@@ -153,7 +168,12 @@ const SingleSize = ({ size, width, height,icon:Icon }: SizeProps) => {
                 <ul className="menu menu-horizontal bg-base-100 rounded-box p-4 mt-4">
                     <li tabIndex={0}>
                         <span className='text-gray-600'>px</span>
-        
+                        {/* <ul className="rounded-box bg-base-100 p-2 text-gray-600">
+                              <li><a>px</a></li>
+                              <li><a>in</a></li>
+                              <li><a>mm</a></li>
+                              <li><a>cm</a></li>
+                          </ul> */}
                     </li>
                 </ul>
             </div>
