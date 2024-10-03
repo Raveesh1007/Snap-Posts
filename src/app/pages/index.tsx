@@ -156,7 +156,7 @@ export default function Home() {
         <div className="text-center h-[100vh] items-center align-middle">
           <h1>
             Made with ❤️ by{" "}
-            <a href="https://x.com/0xRaveesh">Raveesh Kumar </a>
+            <a href="https://x.com/0xRaveesh">Raveesh Kumar</a>
           </h1>
           <h1 className="absolute top-1/2 text-4xl align-middle">
             The Site Only Works on Bigger Screens
