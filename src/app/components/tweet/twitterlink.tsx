@@ -7,7 +7,7 @@ const TwitterLink = () => {
   <label tabIndex={0} className="btn m-1 rounded-none"> Meet The Developer </label>
   <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
     <li className= 'text-gray-800' >
-      <a href= 'https://twitter.com/swarajbachu'> Twitter </a>
+      <a href= 'https://x.com/0xRaveesh'> Twitter </a>
     </li>
   </ul>
   </div>

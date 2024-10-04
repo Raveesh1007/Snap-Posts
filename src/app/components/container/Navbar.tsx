@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchBox from '../components/search_box'
+import SearchBox from '../../components/tweet/search_box'
 import { BsSunFill, BsMoonFill } from 'react-icons/bs'
 
 

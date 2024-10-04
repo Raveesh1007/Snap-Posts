@@ -1,7 +1,7 @@
 import React from 'react'
 import Tweet from './tweet'
-import PlainTweet from '../Plain/PlainTweet'
-import { AppContext } from '@/pages'
+import PlainTweet from '../plain/PlainTweet'
+import { AppContext } from '../../../pages'
 import { useContext } from 'react'
 
 const Body = () => {

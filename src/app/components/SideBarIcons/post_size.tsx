@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext, useState } from 'react';
-import { AppContext } from '@/pages';
+import { AppContext } from "../../../app/pages";
 import { CgSize } from 'react-icons/cg'
 import { CSSTransition } from 'react-transition-group'
 import { SizeList } from './post_sizes';
@@ -46,13 +46,13 @@ const Values = () => {
 
                 <div className="menu text-black">
 
-                    {SizeList.map((size: SizeProps,tabIndex:number) => (
+                    {SizeList.map((size, tabIndex) => (
                         <SingleSize 
                         key={tabIndex}
                         size={size.size}
-                        width = {size.width}
-                        height = {size.height}
-                        icon = {size.icon}
+                        width={size.width}
+                        height={size.height}
+                        icon={size.Icon}
                         />
                     ))}
 

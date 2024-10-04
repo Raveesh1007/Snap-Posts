@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { AppContext } from '@/pages'
 import { BackgroundColor, BackgroundType, 
   CardColor,PlainColors, Responses,
-   Size,Download,PostSize,TextColor } from '@/components'
+   Size,Download,PostSize,TextColor } from '../container'
 
 const SideBar = () => {
 

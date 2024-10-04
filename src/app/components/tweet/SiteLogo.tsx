@@ -13,7 +13,7 @@ const SiteLogo = () => {
       width='50px'
       />
       <p>
-        <span className='text-2xl px-2 font-semi-bold'>Aperturs</span>
+        <span className='text-2xl px-2 font-semi-bold'>Snap-Posts</span>
       </p>
     </div>
   )
