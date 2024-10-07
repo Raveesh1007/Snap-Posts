@@ -1,18 +1,16 @@
-import { Tweet } from '@/containers';
+import { Tweet } from '../container';
 import React from 'react'
 import { useContext,useState } from 'react'
-import { AppContext } from '../pages/index'
+import { AppContext } from '@/app/pages';
 
 
 
 
 
 function LinktoId(link: string): string {
-  // Get the last segment of the URL, which contains the tweet ID
   const segments = link.split('/');
   const id = segments[segments.length - 1];
 
-  // Remove any query parameters or fragments from the ID
   const match = id.match(/^[0-9]+/);
   if (match) {
     return match[0];
@@ -46,9 +44,7 @@ const SearchBox = () => {
           const tweetId = LinktoId(e.target.value);
           console.log(tweetId)
           setTweetId(tweetId)
-          // Do something with the tweet ID
         } catch (error) {
-          // Handle the error gracefully
           console.log(error)
         }
         }}

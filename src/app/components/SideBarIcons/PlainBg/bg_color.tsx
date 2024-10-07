@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext,useState } from 'react';
-import { AppContext } from '@/pages';
+import { AppContext } from "../../../pages";
 
 function getBgClass(hexCode: string): string | undefined {
     const validHexRegex = /^#?([0-9A-Fa-f]{3}){1,2}$/;

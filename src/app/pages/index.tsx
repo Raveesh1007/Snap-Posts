@@ -126,7 +126,7 @@ export default function Home() {
       }}
     >
       <Head>
-        <title>Aperturs</title>
+        <title>Snap-Posts</title>
         <meta
           name="description"
           content="Convert Your tweets into beautiful images"
@@ -151,7 +151,7 @@ export default function Home() {
         <div className="text-center h-[100vh] items-center align-middle">
           <h1>
             Made with ❤️ by{" "}
-            <a href="https://twitter.com/swarajbachu">Swaraj Bachu </a>
+            <a href="https://x.com/0xRaveesh">Raveesh Kumar</a>
           </h1>
           <h1 className="absolute top-1/2 text-4xl align-middle">
             The Site Only Works on Bigger Screens

@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext, useState } from "react";
-import { AppContext } from "@/pages";
+import { AppContext } from "../../../pages";
 import { BiText } from "react-icons/bi";
 
 const TextColor = () => {

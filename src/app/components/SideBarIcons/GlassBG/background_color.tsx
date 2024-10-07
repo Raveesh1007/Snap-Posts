@@ -1,16 +1,15 @@
 import React from 'react'
-import { useContext,useState } from 'react';
-import { AppContext } from '@/pages';
-
+import { useContext} from 'react';
+import { AppContext } from "../../../pages";
 
 const BackgroundColor = () => {
 
-    const { bgColor } = useContext(AppContext)
+    const {  } = useContext(AppContext)
 
 
     return (
       <div  className='sidebar_icon flex-col dropdown dropdown-right dropdown-hover'>
-              <div tabIndex={0} className={`text-3xl ${bgColor} shadow-md rounded-full w-8 h-8 border-2 border-gray-300 text-slate-500`}>
+              <div tabIndex={0} className={`text-3xl ${BackgroundColor} shadow-md rounded-full w-8 h-8 border-2 border-gray-300 text-slate-500`}>
               </div>
               <p className='icon_text'>Color</p>
               <Menu /> 
