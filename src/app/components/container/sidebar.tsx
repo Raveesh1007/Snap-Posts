@@ -1,9 +1,15 @@
 import React from 'react'
 import { useContext } from 'react'
-import { AppContext } from '@/pages'
-import { BackgroundColor, BackgroundType, 
-  CardColor,PlainColors, Responses,
-   Size,Download,PostSize,TextColor } from '../container'
+import { AppContext } from '../../../app/page'
+import  BackgroundColor from '../SideBarIcons/GlassBG/background_color';
+import  BackgroundType  from "../SideBarIcons/bg_type";
+import  PlainColors  from "../SideBarIcons/PlainBg/bg_color";
+import  CardColor  from '../SideBarIcons/GlassBG/card_color';
+import  Responses from '../SideBarIcons/responses';
+import  Size from '../SideBarIcons/size'
+import  Download  from '../SideBarIcons/download';
+import  PostSize  from '../SideBarIcons/post_size';
+import  TextColor  from '../SideBarIcons/PlainBg/text_colors';
 
 const SideBar = () => {
 

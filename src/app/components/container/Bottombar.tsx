@@ -1,6 +1,7 @@
 import React from 'react'
-import { BackgroundType,BackgroundColor,CardColor } from '@/components'
-
+import  BackgroundType  from '../SideBarIcons/bg_type'
+import BackgroundColor from '../SideBarIcons/GlassBG/background_color'
+import CardColor from '../SideBarIcons/GlassBG/card_color'
 const BottomBar = () => {
   return (
     <div className='fixed left-0 right-0 bottom-16 flex justify-center z-20 pointer-events-none mobile-command-bar-bottom-position-first'>

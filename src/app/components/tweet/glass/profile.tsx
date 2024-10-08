@@ -17,16 +17,16 @@ const Profile = () => {
             <div className='flex justify-start'>
             <Image
                 className='rounded-full w-10 h-10 mx-2'
-                src = {tweet?.user?.profile_image_url_https || '/images/profile.webp' }
+                src = {tweet?.user?.profile_image_url_https || "/images/profile.webp" }
                 alt='profile'
                 width={30}
                 height={30} />
             <div className='flex flex-col'>
                 <p className={`text-md mb-[-3px] ${textColor1}`}>
-                    {tweet?.user.name || 'Swaraj Bachu'}
+                    {tweet?.user.name || 'Raveesh Kumar'}
                 </p>
                 <p className={`text-xs ${textColor2}`}>
-                    @{tweet?.user.screen_name || 'swarajbachu'}
+                    @{tweet?.user.screen_name || 'Raveesh Kumar'}
                 </p>
             </div>
             </div>

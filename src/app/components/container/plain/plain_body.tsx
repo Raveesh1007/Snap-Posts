@@ -1,4 +1,4 @@
-import { AppContext } from "@/pages";
+import { AppContext } from "../../../../app/page";
 import React, { useContext } from "react";
 import { PlainTweet } from "..";
 

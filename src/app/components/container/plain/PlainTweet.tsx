@@ -1,11 +1,9 @@
 import React from "react";
-import {
-  PlainProfile,
-  PlainContent,
-  PlainTime,
-  PlainResponse,
-} from "@/components";
-import { AppContext } from "@/pages";
+import PlainProfile from "../../tweet/Plain/PlainProfile";
+import PlainContent from "../../tweet/Plain/PlainContent";
+import PlainTime from "../../tweet/Plain/Plaintime";
+import PlainResponse from "../../tweet/Plain/Plain_responses";
+import { AppContext } from "../../../page";
 import { useContext } from "react";
 
 const PlainTweet = () => {

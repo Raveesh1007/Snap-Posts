@@ -1,5 +1,5 @@
-// src/app/layout.tsx
-import './globals.css'; // Import global styles
+
+import "../app/styles/globals.css";
 import { Inter } from "@next/font/google";
 import { Analytics } from '@vercel/analytics/react';
 
@@ -18,7 +18,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <head>
-        {/* Metadata can be defined here or in individual pages */}
       </head>
       <body>
         {children}

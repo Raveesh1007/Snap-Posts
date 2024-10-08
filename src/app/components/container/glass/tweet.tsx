@@ -1,7 +1,10 @@
 import React from "react";
-import { Profile, Content, Time, Response } from "../index";
+import  Profile from "../../tweet/glass/profile";
+import Content from "../../tweet/glass/content";
+import Time from "../../tweet/glass/time";
 import { AppContext } from "../../../../app/page";
 import { useContext } from "react";
+import { Responses } from "../../tweet";
 
 const Tweet = () => {
   const { response, cardColor } = useContext(AppContext);
@@ -20,7 +23,7 @@ const Tweet = () => {
       <Profile />
       <Content />
       <div className="w-full flex mt-5 justify-between">
-        {response && <Response />}
+        {response && <Responses />}
         <Time />
       </div>
     </div>
