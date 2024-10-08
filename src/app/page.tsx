@@ -1,7 +1,9 @@
+"use client";
+
 import Head from "next/head";
 import { Inter } from "@next/font/google";
-import { Navbar, SideBar, Body, PlainBody } from "../components/container";
-import { TwitterLink, SiteLogo } from "../components/tweet";
+import { Navbar, SideBar, Body, PlainBody } from "../app/components/container";
+import { TwitterLink, SiteLogo } from "../app/components/tweet";
 import { createContext, useState, useEffect } from "react";
 import React, { useCallback, useRef } from "react";
 import { toPng } from "html-to-image";

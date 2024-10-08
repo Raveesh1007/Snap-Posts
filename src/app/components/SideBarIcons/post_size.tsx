@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext, useState } from 'react';
-import { AppContext } from "../../../app/pages";
+import { AppContext } from "../../../app/page";
 import { CgSize } from 'react-icons/cg'
 import { CSSTransition } from 'react-transition-group'
 import { SizeList } from './post_sizes';
@@ -168,12 +168,7 @@ const Input = () => {
                 <ul className="menu menu-horizontal bg-base-100 rounded-box p-4 mt-4">
                     <li tabIndex={0}>
                         <span className='text-gray-600'>px</span>
-                        {/* <ul className="rounded-box bg-base-100 p-2 text-gray-600">
-                              <li><a>px</a></li>
-                              <li><a>in</a></li>
-                              <li><a>mm</a></li>
-                              <li><a>cm</a></li>
-                          </ul> */}
+                       
                     </li>
                 </ul>
             </div>

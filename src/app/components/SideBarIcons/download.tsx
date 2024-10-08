@@ -1,7 +1,7 @@
 import React from 'react'
 import {IoMdDownload} from 'react-icons/io'
 import { useContext } from 'react'
-import { AppContext } from "../../../app/pages";
+import { AppContext } from "../../../app/page";
 
 
 const Download = () => {

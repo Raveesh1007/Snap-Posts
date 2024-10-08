@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { AppContext } from "../../../pages";
+import { AppContext } from "../../../page";
 import Image from "next/image";
 
 function extractTweetText(tweet: string): string{

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { BsTwitter } from 'react-icons/bs'
-import { AppContext } from '../../../pages'
+import { AppContext } from "../../../page"
 import { useContext } from 'react'
 import { link } from 'fs'
 

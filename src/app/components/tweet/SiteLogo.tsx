@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext } from 'react'
-import { AppContext } from '@/app/pages'
+import { AppContext } from "../../../app/page";
 
 const SiteLogo = () => {
 

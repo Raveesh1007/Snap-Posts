@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { AppContext } from "../../../pages";
+import { AppContext } from "../../../page";
 
 function convertDate(dateStr: string): string {
     const date = new Date(dateStr);

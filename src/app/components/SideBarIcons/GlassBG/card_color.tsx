@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext } from 'react';
-import { AppContext } from "../../../pages";
+import { AppContext } from "../../../../app/page";
 import { BsSunFill, BsMoonFill } from 'react-icons/bs'
 
 

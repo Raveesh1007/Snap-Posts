@@ -1,6 +1,6 @@
 import React from "react";
 import { Profile, Content, Time, Response } from "../index";
-import { AppContext } from '../../../pages';
+import { AppContext } from "../../../../app/page";
 import { useContext } from "react";
 
 const Tweet = () => {

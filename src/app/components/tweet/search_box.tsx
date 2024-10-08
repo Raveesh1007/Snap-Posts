@@ -1,7 +1,7 @@
 import { Tweet } from '../container';
 import React from 'react'
 import { useContext,useState } from 'react'
-import { AppContext } from '@/app/pages';
+import { AppContext } from "../../../app/page";
 
 
 
