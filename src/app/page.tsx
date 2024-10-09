@@ -7,7 +7,8 @@ import { TwitterLink, SiteLogo } from "../app/components/tweet";
 import { createContext, useState, useEffect } from "react";
 import React, { useCallback, useRef } from "react";
 import { toPng } from "html-to-image";
-import { type Tweet as TweetData } from "react-tweet/api";
+
+import { getTweet, type Tweet as TweetData } from "react-tweet/api";
 
 interface Size {
   width: number;
@@ -57,7 +58,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchTweet = async () => {
-      if (!tweetId) return; // Skip fetching if tweetId is empty
+      if (!tweetId) return; 
       const res = await fetch(`/api/tweet?id=${tweetId}`);
       if (res.ok) {
         const data = await res.json() as TweetData;
