@@ -1,5 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { getTweet, type Tweet } from "react-tweet/api";
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   req: NextApiRequest,
@@ -7,14 +6,35 @@ export default async function handler(
 ) {
   const { id } = req.query;
 
-  const tweetId = id as string;
+  if (!id || typeof id !== 'string') {
+    return res.status(400).json({ error: 'Invalid tweet ID' });
+  }
+
+  const BEARER_TOKEN = process.env.TWITTER_BEARER_TOKEN;
+
+  if (!BEARER_TOKEN) {
+    return res.status(500).json({ error: 'Twitter bearer token is missing' });
+  }
 
   try {
-    const tweet = id ? await getTweet(tweetId) : null;
+    console.log('Fetching tweet with ID:', id);
 
-    console.log(tweet);
-    res.status(200).json(tweet);
-  } catch (err) {
-    res.status(500).json({ error: "Failed to fetch tweet" });
+    const twitterResponse = await fetch(`https://api.twitter.com/2/tweets/${id}`, {
+      headers: {
+        Authorization: `Bearer ${BEARER_TOKEN}`,
+      },
+    });
+
+    if (!twitterResponse.ok) {
+      const errorData = await twitterResponse.json();
+      console.error('Twitter API error:', errorData);
+      return res.status(twitterResponse.status).json({ error: `Twitter API error: ${errorData.title || twitterResponse.statusText}` });
+    }
+
+    const data = await twitterResponse.json();
+    res.status(200).json(data);
+  } catch (error) {
+    console.error('Error fetching tweet:', error);
+    res.status(500).json({ error: 'Failed to fetch tweet' });
   }
 }

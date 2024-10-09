@@ -56,15 +56,21 @@ export default function Home() {
   const [favicon, setFavicon] = useState("/favicon_light.ico");
   const tweetNameRef = useRef<string |null>(null);
 
-  useEffect(() => {
-    const fetchTweet = async () => {
-      if (!tweetId) return; 
-      const res = await fetch(`/api/tweet?id=${tweetId}`);
-      if (res.ok) {
-        const data = await res.json() as TweetData;
-        tweetNameRef.current = `${data.user.name} tweet ${tweetId}.png`;
-        setTweet(data);
-        console.log(data);
+  useEffect(() =>{
+    const fetchTweet = async() =>{
+      if(!tweetId) return;
+
+      try{
+        const res = await fetch('/api/tweet?id = ${tweetId');
+        if(res.ok){
+          const data = await res.json();
+          setTweet(data);
+          console.log('Fetched tweet data', data);
+        }else{
+          console.error('Failed to fetch tweet data', res.statusText);
+        }
+      }catch(error){
+        console.error('Failed to fetch tweet data', error);
       }
     };
 
