@@ -16,10 +16,7 @@ const Response = () => {
       favCount > 0 ? favCount : ''
       }
       {favCount > 0 && <p className='opacity-70'>likes </p>}
-      {/* {
-      retweetCount > 0 ? retweetCount : ''
-      }
-      {retweetCount > 0 && <p className='opacity-70'>retweets </p>} */}
+      
       </div>        
   )
 }

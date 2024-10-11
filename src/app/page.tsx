@@ -7,8 +7,7 @@ import { TwitterLink, SiteLogo } from "../app/components/tweet";
 import { createContext, useState, useEffect } from "react";
 import React, { useCallback, useRef } from "react";
 import { toPng } from "html-to-image";
-
-import { getTweet, type Tweet as TweetData } from "react-tweet/api";
+import { Tweet as TweetData } from "react-tweet/api";
 
 interface Size {
   width: number;
@@ -56,26 +55,28 @@ export default function Home() {
   const [favicon, setFavicon] = useState("/favicon_light.ico");
   const tweetNameRef = useRef<string |null>(null);
 
-  useEffect(() =>{
-    const fetchTweet = async() =>{
-      if(!tweetId) return;
-
-      try{
-        const res = await fetch('/api/tweet?id = ${tweetId');
-        if(res.ok){
-          const data = await res.json();
+  useEffect(() => {
+    const fetchTweet = async () => {
+      if (!tweetId) return; 
+  
+      try {
+        const res = await fetch(`/api/tweet?id=${tweetId}`);
+        if (res.ok) {
+          const data = await res.json() as TweetData;
+          tweetNameRef.current = `${data.user.name} tweet ${tweetId}.png`;
           setTweet(data);
-          console.log('Fetched tweet data', data);
-        }else{
-          console.error('Failed to fetch tweet data', res.statusText);
+          console.log(data);
+        } else {
+          console.error("Failed to fetch tweet data:", res.statusText);
         }
-      }catch(error){
-        console.error('Failed to fetch tweet data', error);
+      } catch (error) {
+        console.error("Error fetching tweet:", error);
       }
     };
-
+  
     fetchTweet();
   }, [tweetId]);
+  
 
   useEffect(() => {
     const prefersDark =
@@ -133,34 +134,26 @@ export default function Home() {
         favicon,
         setFavicon,
       }}
-    >
-      <Head>
+    >      
+    <Head>
         <title>Snap-Posts</title>
-        <meta
-          name="description"
-          content="Convert Your tweets into beautiful images"
-        />
+        <meta name="description" content="Convert Your tweets into beautiful images" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" sizes="3000x3000" href={favicon} />
       </Head>
-      <section className="relative h-screen  max-sm:hidden">
+      <section className="relative h-screen max-sm:hidden">
         <Navbar />
         <SideBar />
-        <div
-          className="py-4 min-h-[80vh] max-h-[90vh] w-full flex justify-center overflow-auto"
-          ref={ref}
-        >
+        <div className="py-4 min-h-[80vh] max-h-[90vh] w-full flex justify-center overflow-auto" ref={ref}>
           {bgType === "Glass" ? <Body /> : <PlainBody />}
         </div>
-
         <TwitterLink />
         <SiteLogo />
       </section>
       <section className="sm:hidden">
         <div className="text-center h-[100vh] items-center align-middle">
           <h1>
-            Made with ❤️ by{" "}
-            <a href="https://x.com/0xRaveesh">Raveesh Kumar</a>
+            Made with ❤️ by <a href="https://x.com/0xRaveesh">Raveesh Kumar</a>
           </h1>
           <h1 className="absolute top-1/2 text-4xl align-middle">
             The Site Only Works on Bigger Screens

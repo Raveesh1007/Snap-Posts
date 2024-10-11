@@ -1,4 +1,3 @@
-
 import "../app/styles/globals.css";
 import { Inter } from "@next/font/google";
 import { Analytics } from '@vercel/analytics/react';
@@ -17,11 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <head>
-      </head>
-      <body>
+      <head />
+      <body className={inter.className}>
         {children}
-        <Analytics />
+        {/* Only include Analytics in production */}
+        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   );
