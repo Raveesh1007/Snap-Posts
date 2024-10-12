@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { BsTwitter } from "react-icons/bs";
 import { useContext } from "react";
-import { AppContext } from "../../../page";
+import { AppContext } from "../../../context/AppContext";
 
 const PlainProfile =() =>{
     const {tweet, textColor} = useContext(AppContext);

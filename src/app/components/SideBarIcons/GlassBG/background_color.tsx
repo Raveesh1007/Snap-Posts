@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext} from 'react';
-import { AppContext } from "../../../../app/page";
+import { AppContext } from "../../../context/AppContext";
 
 const BackgroundColor = () => {
 

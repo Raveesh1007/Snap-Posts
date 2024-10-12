@@ -1,7 +1,7 @@
 import React from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useContext } from "react";
-import { AppContext } from "../../../app/page";
+import { AppContext } from "../../context/AppContext";
 
 function getTheme(isGlass: boolean): string {
   if (isGlass) {

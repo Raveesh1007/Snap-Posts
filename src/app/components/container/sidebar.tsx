@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext } from 'react'
-import { AppContext } from '../../../app/page'
+import { AppContext } from '../../context/AppContext';
 import  BackgroundColor from '../SideBarIcons/GlassBG/background_color';
 import  BackgroundType  from "../SideBarIcons/bg_type";
 import  PlainColors  from "../SideBarIcons/PlainBg/bg_color";

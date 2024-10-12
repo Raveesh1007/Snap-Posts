@@ -1,112 +1,72 @@
-"use client";
+'use client';
 
-import Head from "next/head";
-import { Inter } from "@next/font/google";
-import { Navbar, SideBar, Body, PlainBody } from "../app/components/container";
-import { TwitterLink, SiteLogo } from "../app/components/tweet";
-import { createContext, useState, useEffect } from "react";
-import React, { useCallback, useRef } from "react";
-import { toPng } from "html-to-image";
-import { Tweet as TweetData } from "react-tweet/api";
+import Head from 'next/head';
+import { Inter } from '@next/font/google';
+import { Navbar, SideBar, Body, PlainBody } from '../app/components/container';
+import { TwitterLink, SiteLogo } from '../app/components/tweet';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import React from 'react';
+import { toPng } from 'html-to-image';
+import { fetchTweetById } from '../app/tweet/action'; 
+import { Tweet as TweetData } from 'react-tweet/api';
+import { AppContext } from './context/AppContext'; // Importing from the context file
 
-interface Size {
-  width: number;
-  height: number;
-}
-
-export const AppContext = createContext({
-  bgType: "",
-  setBgType: (bgType: string) => {},
-  response: false,
-  setResponse: (response: boolean) => {},
-  bgColor: "",
-  setBgColor: (bgColor: string) => {},
-  fontSize: "",
-  setFontSize: (fontSize: string) => {},
-  cardColor: "",
-  setCardColor: (cardColor: string) => {},
-  onButtonClick: () => {},
-  tweetId: "",
-  setTweetId: (tweetId: string) => {},
-  tweet: null as TweetData | null,
-  height: 0,
-  setHeight: (height: number) => {},
-  width: 0,
-  setWidth: (width: number) => {},
-  textColor: "",
-  setTextColor: (textColor: string) => {},
-  favicon: "",
-  setFavicon: (favicon: string) => {},
-});
-
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
-  const [bgType, setBgType] = useState("Plain");
-  const [response, setResponse] = useState(false);
-  const [bgColor, setBgColor] = useState("white");
-  const [fontSize, setFontSize] = useState("text-lg");
-  const [cardColor, setCardColor] = useState("Dark");
+  const [bgType, setBgType] = useState<string>('Plain');
+  const [response, setResponse] = useState<boolean>(false);
+  const [bgColor, setBgColor] = useState<string>('white');
+  const [fontSize, setFontSize] = useState<string>('text-lg');
+  const [cardColor, setCardColor] = useState<string>('Dark');
   const [tweet, setTweet] = useState<TweetData | null>(null);
-  const [tweetId, setTweetId] = useState("");
-  const [height, setHeight] = useState(1080);
-  const [width, setWidth] = useState(1080);
-  const [textColor, setTextColor] = useState("text-black");
-  const [favicon, setFavicon] = useState("/favicon_light.ico");
-  const tweetNameRef = useRef<string |null>(null);
+  const [tweetId, setTweetId] = useState<string>('');
+  const [height, setHeight] = useState<number>(1080);
+  const [width, setWidth] = useState<number>(1080);
+  const [textColor, setTextColor] = useState<string>('text-black');
+  const [favicon, setFavicon] = useState<string>('/favicon_light.ico');
+  const tweetNameRef = useRef<string | null>(null);
 
   useEffect(() => {
     const fetchTweet = async () => {
-      if (!tweetId) return; 
-  
+      if (!tweetId) return;
+
       try {
-        const res = await fetch(`/api/tweet?id=${tweetId}`);
-        if (res.ok) {
-          const data = await res.json() as TweetData;
-          tweetNameRef.current = `${data.user.name} tweet ${tweetId}.png`;
-          setTweet(data);
-          console.log(data);
+        const fetchedTweet = await fetchTweetById(tweetId);
+        if (fetchedTweet) {
+          tweetNameRef.current = `${fetchedTweet.user.name} tweet ${tweetId}.png`;
+          setTweet(fetchedTweet);
         } else {
-          console.error("Failed to fetch tweet data:", res.statusText);
+          console.error('Tweet not found');
         }
       } catch (error) {
-        console.error("Error fetching tweet:", error);
+        console.error('Error fetching tweet:', error);
       }
     };
-  
+
     fetchTweet();
   }, [tweetId]);
-  
 
   useEffect(() => {
     const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setFavicon(prefersDark ? "/favicon_dark.ico" : "/favicon_light.ico");
+      window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setFavicon(prefersDark ? '/favicon_dark.ico' : '/favicon_light.ico');
   }, []);
 
   const ref = useRef<HTMLDivElement>(null);
 
   const onButtonClick = useCallback(() => {
-    if (
-      ref.current === null ||
-      ref.current.firstChild === null ||
-      !(ref.current.firstChild instanceof HTMLElement)
-    ) {
-      return;
-    }
+    if (!ref.current || !(ref.current.firstChild instanceof HTMLElement)) return;
 
-    toPng(ref.current.firstChild, { cacheBust: true })
+    toPng(ref.current.firstChild as HTMLElement, { cacheBust: true })
       .then((dataUrl) => {
-        const link = document.createElement("a");
-        link.download = tweetNameRef.current || "tweet.png";
+        const link = document.createElement('a');
+        link.download = tweetNameRef.current || 'tweet.png';
         link.href = dataUrl;
         link.click();
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [ref]);
+      .catch((err) => console.error('Error creating image:', err));
+  }, [ref, tweetNameRef.current]);
 
   return (
     <AppContext.Provider
@@ -124,6 +84,7 @@ export default function Home() {
         tweetId,
         setTweetId,
         tweet,
+        setTweet,
         onButtonClick,
         height,
         setHeight,
@@ -134,8 +95,8 @@ export default function Home() {
         favicon,
         setFavicon,
       }}
-    >      
-    <Head>
+    >
+      <Head>
         <title>Snap-Posts</title>
         <meta name="description" content="Convert Your tweets into beautiful images" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -145,7 +106,7 @@ export default function Home() {
         <Navbar />
         <SideBar />
         <div className="py-4 min-h-[80vh] max-h-[90vh] w-full flex justify-center overflow-auto" ref={ref}>
-          {bgType === "Glass" ? <Body /> : <PlainBody />}
+          {bgType === 'Glass' ? <Body /> : <PlainBody />}
         </div>
         <TwitterLink />
         <SiteLogo />

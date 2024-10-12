@@ -2,7 +2,7 @@ import React from "react";
 import  Profile from "../../tweet/glass/profile";
 import Content from "../../tweet/glass/content";
 import Time from "../../tweet/glass/time";
-import { AppContext } from "../../../../app/page";
+import { AppContext } from "../../../context/AppContext";
 import { useContext } from "react";
 import { Responses } from "../../tweet";
 

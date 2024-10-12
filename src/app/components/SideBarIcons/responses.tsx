@@ -1,6 +1,6 @@
 import {AiFillHeart,AiOutlineHeart} from 'react-icons/ai'
 import {  useContext } from 'react';
-import { AppContext } from "../../../app/page";
+import { AppContext } from "../../context/AppContext";
 
 const Responses = () => {
 

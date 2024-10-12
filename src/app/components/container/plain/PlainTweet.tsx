@@ -3,7 +3,7 @@ import PlainProfile from "../../tweet/Plain/PlainProfile";
 import PlainContent from "../../tweet/Plain/PlainContent";
 import PlainTime from "../../tweet/Plain/Plaintime";
 import PlainResponse from "../../tweet/Plain/Plain_responses";
-import { AppContext } from "../../../page";
+import { AppContext } from "../../../context/AppContext";
 import { useContext } from "react";
 
 const PlainTweet = () => {
