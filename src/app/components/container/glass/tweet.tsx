@@ -4,7 +4,7 @@ import Content from "../../tweet/glass/content";
 import Time from "../../tweet/glass/time";
 import { AppContext } from "../../../context/AppContext";
 import { useContext } from "react";
-import { Responses } from "../../tweet";
+import  Responses  from "../../tweet/glass/responses";
 
 const Tweet = () => {
   const { response, cardColor } = useContext(AppContext);

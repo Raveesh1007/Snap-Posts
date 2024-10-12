@@ -1,24 +1,25 @@
-import React from 'react'
-import { useContext } from 'react'
-import { AppContext } from "../../../context/AppContext"
-
+import React, { useContext } from 'react';
+import { AppContext } from "../../../context/AppContext";
 
 const Response = () => {
-    const { cardColor,tweet } = useContext(AppContext)
+  const { cardColor, tweet } = useContext(AppContext);
 
-    const favCount = tweet?.favorite_count ?? 0
-    // const retweetCount = tweet?.retweet_count ?? 0
+  const favCount = tweet?.favorite_count ?? 0;
+  
 
   return (
-    <div className={`w-full flex justify-start  gap-2 ml-2 
-    ${cardColor == "Dark"? 'text-gray-100':'text-gray-700'  }`}>
-      {
-      favCount > 0 ? favCount : ''
-      }
-      {favCount > 0 && <p className='opacity-70'>likes </p>}
-      
-      </div>        
-  )
-}
+    <div className={`w-full flex justify-start gap-2 ml-2 
+    ${cardColor === "Dark" ? 'text-gray-100' : 'text-gray-700'}`}>
+      {favCount > 0 && (
+        <>
+          {favCount}
+          <p className="opacity-70">likes</p>
+        </>
+      )}
 
-export default Response
+      
+    </div>
+  );
+};
+
+export default Response;

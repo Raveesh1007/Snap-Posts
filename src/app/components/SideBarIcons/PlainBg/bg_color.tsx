@@ -5,10 +5,10 @@ import { AppContext } from "../../../context/AppContext";
 function getBgClass(hexCode: string): string | undefined {
     const validHexRegex = /^#?([0-9A-Fa-f]{3}){1,2}$/;
     if (validHexRegex.test(hexCode)) {
-      // valid hex code, return bg class
+      
       return `${hexCode}`;
     } else {
-      // invalid hex code, return undefined
+      
       console.log(`${hexCode} is not a valid hex code`);
       return undefined;
     }
